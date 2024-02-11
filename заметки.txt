@@ -12,13 +12,17 @@
 После установи пакеты из requirements.txt
 pip install requirements.txt
 
--Готово. можно работать
-
+-Готово. Можно работать
 
 
 # Dima
 
+
 # git
+
+
+git add .
+git commit -m ''
 
 git remote add upstream git@github.com:oiltema/django_dev.git
 git fetch upstream
