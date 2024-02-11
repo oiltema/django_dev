@@ -1,4 +1,4 @@
-#!/Users/ArtemLobanovskii/code/django_dev/env/bin/python3.11
+#!/home/bossfi/PycharmProjects/practis/project_1/django_dev/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
