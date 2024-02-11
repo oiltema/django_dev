@@ -1,2 +1,11 @@
 # добавить requirementx.txt
 # pip freeze > requirements.txt
+
+
+
+
+# Dima
+git remote add upstream git@github.com:oiltema/django_dev.git
+git fetch upstream
+git checkout -b feature
+git push origin feature
