@@ -1,0 +1,2 @@
+# добавить requirementx.txt
+# pip freeze > requirements.txt
