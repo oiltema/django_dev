@@ -1,4 +1,4 @@
-#!/Users/ArtemLobanovskii/code/django_dev/django_pr/bin/python3.11
+#!/Users/ArtemLobanovskii/code/django_dev/env/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
