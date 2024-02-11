@@ -1,3 +1,6 @@
+# venv's
 env
 venv
+.venv
+
 ../.idea

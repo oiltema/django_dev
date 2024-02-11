@@ -2,9 +2,24 @@
 # pip freeze > requirements.txt
 
 
+# Tema
+
+После пула удали старое и сделай новое виртуально окружение
+-Назвать его надо как установленно в gitignore (venv или env)
+
+Запусти виртуальное оружение
+
+После установи пакеты из requirements.txt
+pip install requirements.txt
+
+-Готово. можно работать
+
 
 
 # Dima
+
+# git
+
 git remote add upstream git@github.com:oiltema/django_dev.git
 git fetch upstream
 git checkout -b feature
