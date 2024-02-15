@@ -10,7 +10,7 @@
 Запусти виртуальное оружение
 
 После установи пакеты из requirements.txt
-pip install requirements.txt
+pip install -r requirements.txt
 
 -Готово. Можно работать
 
