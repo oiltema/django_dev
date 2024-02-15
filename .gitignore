@@ -3,4 +3,4 @@ env
 venv
 .venv
 
-../.idea
+.idea
