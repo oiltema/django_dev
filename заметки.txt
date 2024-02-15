@@ -1,25 +1,21 @@
 # добавить requirementx.txt
-# pip freeze > requirements.txt
+pip freeze > requirements.txt
+pip install -r requirements.txt
 
 
 # Tema
 
-После пула удали старое и сделай новое виртуально окружение
--Назвать его надо как установленно в gitignore (venv или env)
 
-Запусти виртуальное оружение
 
-После установи пакеты из requirements.txt
-pip install -r requirements.txt
-
--Готово. Можно работать
-
+_______________________________
 
 # Dima
 
+разобраться с гит интерфейсом
+
+сделать блог приблеженный к книжному варианту
 
 # git
-
 
 git add .
 git commit -m ''
