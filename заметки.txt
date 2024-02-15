@@ -11,8 +11,13 @@
 
 # Dima
 
+
+# git
+
+
 git add .
 git commit -m ''
+
 git remote add upstream git@github.com:oiltema/django_dev.git
 git fetch upstream
 git checkout -b feature
