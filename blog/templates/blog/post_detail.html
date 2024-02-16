@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+
+<div style="margin:30px; text-align:left">
+    <p>{{ post.author }} | {{ post.updated }}</p>
+    <h5>{{ post.title }}</h5><hr>
+    <p>{{ post.content }}</p>
+</div>
+
+<div style="margin:30px; margin-top:70px;">
+    <h5>Комментарии:</h5>
+    <hr>
+    <p>Добавить комментарий:</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" style="form-control">
+    </form>
+    <hr>
+</div>
+{% endblock content %}

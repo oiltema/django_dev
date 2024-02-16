@@ -1,0 +1,7 @@
+
+
+
+<form action="{% url 'blog:search_by_string' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="post">
+  {% csrf_token %}
+  <input type="text" class="form-control form-control-dark text-bg-white" placeholder="Поиск.." name="search">
+</form>

@@ -1,9 +1,11 @@
 {% extends 'blog/base.html' %}
-{% load blog_tags %}
 
-{% block title %}Главная{% endblock title %}
+{% block title %}Результаты поиска{% endblock title %}
 
 {% block content %}
+<div style="margin-left:30px; margin-top:30px;">
+<h3>Результаты поиска "{{ search }}":</h3>
+</div>
 
 <div style="margin:30px; width:60%; display: inline-block;">
     {% for pt in post %}
@@ -26,12 +28,5 @@
         </div>
     </div>
     {% endfor %}
-</div>
-<div style="margin:30px; float:right; width: 30%">
-    <h5 style="margin-left:-10px;">Меню:</h5>
-    <h6>Всего постов: {% count_post %}</h6>
-    <h6>Последние посты:</h6>
-    {% latest_post %}
-    <h6>Самые комментируемые:</h6>
 </div>
 {% endblock content %}
