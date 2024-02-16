@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post, Comment
 
 
 @admin.register(Post)
@@ -11,3 +11,10 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ['status', 'publish']
     list_filter = ['status']
 
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['post', 'author', 'updated']
+    search_fields = ['text']
+    ordering = ['updated']
+    list_filter = ['post']

@@ -46,3 +46,22 @@ class Post(models.Model):
         return reverse('blog:post_detail', kwargs={'post_slug': self.slug})
 
 
+class Comment(models.Model):
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=User, verbose_name='Автор')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_comment', verbose_name='Пост')
+    text = models.TextField(max_length=255, verbose_name='Текст')
+
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Обновлено')
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return f'{self.author}, {self.post}, {self.updated}'
+
+    class Meta:
+        ordering = ['-updated']
+        indexes = [
+            models.Index(fields=['-updated'])
+        ]

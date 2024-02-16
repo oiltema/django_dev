@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
 
-from .models import Post
+from .models import Post, Comment
 
 
 def homepage(request):
