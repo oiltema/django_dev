@@ -13,11 +13,11 @@
 <div style="margin:30px; margin-top:70px;">
     <h5>Комментарии:</h5>
     <hr>
-    <p>Добавить комментарий:</p>
+    <p>Редактировать комментарий:</p>
     <form method="post" style="width:40%; ">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Добавить</button>
+        <button type="submit">Редактировать</button>
     </form>
     <hr>
     <div>

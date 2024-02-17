@@ -10,12 +10,13 @@
     <div style="margin-top:10px; background:gainsboro;">
         <div style="margin-left:10px; margin-top:10px">
             <a>{{ pt.author }} | {{ pt.publish }}</a>
-            <h6>{{ pt.title }}</h6>
+            <h6><a href="{{ pt.get_absolute_url }}" style="text-decoration:None">{{ pt.title }}</a></h6>
             <p>{{ pt.content|truncatechars:90|linebreaks }}</p>
             <p>Метки:
             {% if pt.tags %}
                 {% for tag in pt.tags.all %}
                     <a href="{% url 'blog:sorted_by_tags' tag.slug %}" style="text-decoration:None;">{{ tag.name }} </a>/
+                {% if not forloop.last %}{% endif %}
                 {% endfor %}
             {% else %}
                 <a>Пусто</a>
@@ -26,6 +27,7 @@
         </div>
     </div>
     {% endfor %}
+    {% include 'system/paginator.html' with page=post %}
 </div>
 <div style="margin:30px; float:right; width: 30%">
     <h5 style="margin-left:-10px;">Меню:</h5>
@@ -33,5 +35,11 @@
     <h6>Последние посты:</h6>
     {% latest_post %}
     <h6>Самые комментируемые:</h6>
+    <ul>
+    {% most_comments_posts as comments_post %}
+        {% for post in comments_post %}
+        <li><a href="{{ post.get_absolute_url }}" style="text-decoration:None;">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock content %}

@@ -15,3 +15,8 @@ def latest_post(count=5):
 @register.simple_tag
 def count_post():
     return Post.published.count()
+
+
+@register.simple_tag
+def most_comments_posts(count=5):
+    return Post.published.annotate(total_comments=Count('post_comment')).order_by('-total_comments')[:count]
