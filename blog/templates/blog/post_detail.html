@@ -8,6 +8,15 @@
     <p>{{ post.author }} | {{ post.updated }}</p>
     <h5>{{ post.title }}</h5><hr>
     <p>{{ post.content }}</p>
+    <hr>
+</div>
+<div style="margin:30px;">
+    <h5>Похожие посты:</h5>
+    <ul>
+    {% for post in similar_posts %}
+        <li><a href="{{ post.get_absolute_url }}" style="text-decoration:None;">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
 </div>
 
 <div style="margin:30px; margin-top:70px;">

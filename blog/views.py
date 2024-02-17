@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.core.paginator import Paginator
 from django.core.paginator import PageNotAnInteger, EmptyPage
 
@@ -29,8 +29,10 @@ def homepage(request):
 def post_detail(request, post_slug):
     post = Post.objects.get(slug=post_slug)
     comments = Comment.objects.filter(post__slug=post_slug)
-    print(request.POST)
-    print(request.GET)
+
+    post_tags_list = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_list).exclude(slug=post_slug)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('same_tags', '-publish')[:4]
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -46,6 +48,7 @@ def post_detail(request, post_slug):
         'post': post,
         'comments': comments,
         'form': form,
+        'similar_posts': similar_posts,
     }
     return render(request, 'blog/post_detail.html', context)
 
