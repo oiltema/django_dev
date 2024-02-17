@@ -13,7 +13,8 @@
 <div style="margin:30px; margin-top:70px;">
     <h5>Комментарии:</h5>
     <hr>
-    <p>Редактировать комментарий:</p>
+    <button type="button" onclick="location.href='{{ post.get_absolute_url }}'">Вернуться</button>
+    <p style="margin-top:20px">Редактировать комментарий:</p>
     <form method="post" style="width:40%; ">
         {% csrf_token %}
         {{ form.as_p }}
