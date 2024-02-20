@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+
+{% block title %}Главная{% endblock title %}
+
+{% block content %}
+
+<div style="margin:30px; width:60%; display: inline-block;">
+    {% for pt in post %}
+    <div style="margin-top:10px; background:gainsboro;">
+        <div style="margin-left:10px; margin-top:10px">
+            <p>Автор: {{ pt.author }}</p>
+            <p>Опубликовано: {{ pt.publish }}</p>
+            <h4><a href="{{ pt.get_absolute_url }}" style="text-decoration:None">{{ pt.title }}</a></h4>
+            <p>{{ pt.content|truncatechars:90|linebreaks }}</p>
+            <p>Метки:
+            {% if pt.tags %}
+                {% for tag in pt.tags.all %}
+                    <a href="{% url 'blog:sorted_by_tags' tag.slug %}" style="text-decoration:None;">{{ tag.name }}</a>
+                {% if not forloop.last %}/ {% endif %}
+                {% endfor %}
+            {% else %}
+                <a>Пусто</a>
+            {% endif %}
+            </p>
+            <button style="background:burlywood;"><a href="{{ pt.get_absolute_url }}" style="color:black; text-decoration:None;">Читать далее...</a></button>
+            <hr>
+        </div>
+    </div>
+    {% endfor %}
+    {% include 'system/paginator.html' with page=post %}
+</div>
+<div style="margin:30px; float:right; width: 30%; background:gainsboro;">
+    <div style="margin:10px">
+        <h4>Всего постов: {% count_post %}</h4>
+        <h4>Последние посты:</h4>
+        {% latest_post %}
+    </div>
+    <div style="margin:10px">
+        <h4>Самые комментируемые:</h4>
+        <ul>
+        {% most_comments_posts as comments_post %}
+            {% for post in comments_post %}
+            <li><a href="{{ post.get_absolute_url }}" style="text-decoration:None;">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

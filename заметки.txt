@@ -1,5 +1,5 @@
 # добавить requirementx.txt
-# pip freeze > requirements.txt
+pip freeze > requirements.txt
 
 
 # Tema
@@ -41,6 +41,14 @@
 
 # Dima
 
+разобраться с гит интерфейсом
+
+сделать блог приблеженный к книжному варианту
+
+дедлайн 20.02
+
+#16.02
+Пагинацию сделать
 
 # git
 
