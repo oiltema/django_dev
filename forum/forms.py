@@ -25,7 +25,6 @@ class RegisterUserForm(forms.ModelForm):
                                widget=forms.TextInput())
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput())
-
     password2 = forms.CharField(label='Again Password',
                                widget=forms.PasswordInput())
     class Meta:
