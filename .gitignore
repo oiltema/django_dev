@@ -3,6 +3,4 @@ venv
 .idea
 db.sqlite3
 
-blog/__pycache__
-blog_api/__pycache__
-system/__pycache__
+**/pycache/
