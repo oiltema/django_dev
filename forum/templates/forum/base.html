@@ -1,0 +1,131 @@
+{% load forum_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    Boostrup setings-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!--    NAME PAGE-->
+    <title>
+       main
+    </title>
+
+ <body style=" width:100%; height:100%;">
+
+<!--<header style="background:orange; position: fixed; width: 100%; height:10%; min-height: 80px; max-height: 200px;">-->
+    <!--            HEADER CONTENT-->
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{% url 'forum:main_page' %}" class="nav-link px-2 text-secondary">Home</a></li>
+            {% if request.user.username %}
+          <li><a href="{% url 'forum:new_post' %}" class="nav-link px-2 text-white">Add post</a></li>
+            {% endif %}
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+
+            {% if request.user.username %}
+            <button type="button" onclick="location.href='#'" class="btn btn-outline-light me-2">{{ request.user}}</button>
+            <button type="button" onclick="location.href='{% url 'forum:logout' %}'"  class="btn btn-warning">Logout</button>
+            {% else %}
+            <button type="button" onclick="location.href='{% url 'forum:login' %}'" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" onclick="location.href='{% url 'forum:register' %}'"  class="btn btn-warning">Sign-up</button>
+            {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </header>
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="float: left; width: 280px; height: 100%;">
+    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        {% get_category as categories %}
+        {% for cat in categories %}
+      <li class="nav-item">
+<!--        <a href="#" class="nav-link active" aria-current="page">-->
+                   <a href="{% url 'forum:art_to_cat' cat.slug_cat %}" class="nav-link link-body-emphasis">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+         {{ cat }}
+        </a>
+      </li>
+        {% endfor %}
+
+<!--        -->
+<!--      <li>-->
+<!--        <a href="#" class="nav-link link-body-emphasis">-->
+<!--          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>-->
+<!--          Dashboard-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="#" class="nav-link link-body-emphasis">-->
+<!--          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>-->
+<!--          Orders-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="#" class="nav-link link-body-emphasis">-->
+<!--          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>-->
+<!--          Products-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="#" class="nav-link link-body-emphasis">-->
+<!--          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>-->
+<!--          Customers-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <hr>-->
+<!--    <div class="dropdown">-->
+<!--      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">-->
+<!--        <strong>mdo</strong>-->
+<!--      </a>-->
+      <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+<!--    <div style="background:; position: ; margin-left: 20%; width: 100%; height:100%;">-->
+        <div style="float: left;">
+        <!--        PAGE CONTENT-->
+        {% block main_page %}
+
+
+        {% endblock %}
+</div>
+
+
+<!--    <div style="background:red; position: fixed; width: 20%; height:100%; min-width: 380px;">-->
+<!--        {% get_category as categories %}-->
+<!--        {{ categories }}-->
+<!--&lt;!&ndash;        SIDE BAR CONTENT&ndash;&gt;-->
+<!--    </div>-->
+
+
+
+
+    <!--    Boostrup setings-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

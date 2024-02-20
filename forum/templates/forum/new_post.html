@@ -1,0 +1,10 @@
+{% extends 'forum/base.html' %}
+
+{% block main_page %}
+
+<form method="post">
+  {% csrf_token %}
+    {{ form.as_p }}
+  <button type="submit">Add post</button>
+</form>
+{% endblock %}
