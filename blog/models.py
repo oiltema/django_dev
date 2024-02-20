@@ -17,7 +17,7 @@ class Post(models.Model):
         DRAFT = 'DF', 'Черновик'
         PUBLISH = 'PB', 'Опубликовано'
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=User, verbose_name='Автор')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=User, related_name='posts', verbose_name='Автор')
 
     title = models.CharField(max_length=155, verbose_name='Заголовок')
     slug = models.SlugField(max_length=50, db_index=True, verbose_name='Слаг')
