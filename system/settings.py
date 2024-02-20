@@ -28,6 +28,8 @@ INSTALLED_APPS = [
 
     'blog',
     'forum',
+    #special exteniton for shell_pluse
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

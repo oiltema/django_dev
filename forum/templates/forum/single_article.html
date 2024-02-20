@@ -1,0 +1,17 @@
+{% extends 'forum/base.html' %}
+
+{% block main_page %}
+<h3>{{ article.title }}</h3>
+<span>{{ article.content }}</span>
+{% for comment in article_comments %}
+<p>{{ comment.author }}</p>
+<p>{{ comment.comment }}</p>
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+     <p><button type="submit">BUTTON</button></p>
+</form>
+
+
+{% endblock %}

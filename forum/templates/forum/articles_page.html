@@ -1,0 +1,10 @@
+{% extends 'forum/base.html' %}
+
+{% block main_page %}
+{% for article in articles %}
+<h3>{{ article.title }}</h3>
+<a href="{% url 'forum:page_to_article' article.slug %}">read more</a>
+
+{% endfor %}
+
+{% endblock %}
